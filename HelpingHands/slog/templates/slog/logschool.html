@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" />
+  <link rel="stylesheet" href="{% static 'slog/css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'slog/css/loginform.css' %}">
+
+  <title>login</title>
+<style>
+
+</style>
+
+</head>
+
+<body onpageshow="getLocation()">
+    
+  
+  
+
+  <div class="container-fluid bg">
+      <div class="row">
+         <div class="col-md-4 col-sm-4 col-xs-12"></div>
+     <div class="col-md-4 col-sm-4 col-xs-12">
+
+       <form action="{% url 'slog:wshow' %}" class="form-container" method="post">
+        {% csrf_token %}
+           <h2>LOGIN SCHOOL</h2>
+        <div class="form-group">
+          <label for="exampleInputEmail1">school ID</label>
+          <input type="number" class="form-control" id="ID" placeholder="ID" name="sid" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Password">
+        </div>
+<div style="display:none;">
+            <div class="form-group">
+          <label for="exampleInputPassword1">Latitude</label>
+          <input type="float" class="form-control" id="lattitude" placeholder="" name="lat">
+        </div>
+         <div class="form-group">
+          <label for="exampleInputPassword1">Longitude</label>
+          <input type="float" class="form-control" id="longitude" placeholder="" name="long">
+        </div>
+</div>
+        <br>
+        <div class="form-group">
+                <input type="submit" name="Submit" class="btn btn-success btn-block">
+              </div>         <br>
+        <div ><span style="color:white">Dont' have an account yet ?<span><a href="{% url 'sreg:regschool' %}" style="color:green"> Register</a></span></strong></div>
+      </form>
+
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12"></div>
+      </div>
+    </div>
+  
+
+<script>
+var x = document.getElementById("lattitude");
+var y = document.getElementById("longitude");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+          alert("Geolocation is not supported by this browser.");
+    }
+}
+
+function showPosition(position) {
+    x.value = position.coords.latitude;
+    y.value = position.coords.longitude;
+}
+</script>
+
+
+   
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+
+  <script>
+    // Get the current year for the copyright
+    $('#year').text(new Date().getFullYear());
+
+    
+
+  </script>
+</body>
+
+</html>
