@@ -23,6 +23,7 @@ def regschool1(request):
 		conn = sqlite3.connect('schools.db')
 		cur = conn.cursor()
 		print("Check1")
+		cur.execute("""SELECT * FROM schools;""")
 		cur.execute("""INSERT INTO schools (sn,cn,email,ID,lat,long) VALUES (?,?,?,?,?,?);""",(name,cn,email,ID,lat,lon))
 		tablename="s"+str(ID)
 		cur.execute(""" CREATE TABLE """ + tablename + """( ID INTEGER,vn TEXT,type TEXT,cn INTEGER,email TEXT);""")
